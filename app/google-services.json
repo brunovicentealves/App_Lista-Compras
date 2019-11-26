@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "680082609587",
+    "firebase_url": "https://applistacompras-7c3f5.firebaseio.com",
+    "project_id": "applistacompras-7c3f5",
+    "storage_bucket": "applistacompras-7c3f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680082609587:android:ba7c88dec28f0f905867c6",
+        "android_client_info": {
+          "package_name": "com.bruno.lista_compras"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680082609587-01ei1ps80cjghanhmqljcoi77d20apoc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bruno.lista_compras",
+            "certificate_hash": "a468112cf73275586df0a286ea3c3692b22db167"
+          }
+        },
+        {
+          "client_id": "680082609587-cmn002126rv7kbnbf1k0nboqlo64n89a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoLKyVpr5QjaxFXQKdElvbT66tf0MP47I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680082609587-cmn002126rv7kbnbf1k0nboqlo64n89a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
