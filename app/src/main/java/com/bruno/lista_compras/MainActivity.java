@@ -1,14 +1,15 @@
 package com.bruno.lista_compras;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.view.Menu;
@@ -19,8 +20,8 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser user;
-    private Button btnlogout;
-    private EditText txtemail,txtsenha;
+    private Button btnlogout,btncadastroproduto;
+    private EditText txtid;
 
 
     @Override
@@ -28,23 +29,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializarcomponentes();
+
         eventoonclick();
 
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private void inicializarcomponentes(){
         btnlogout = findViewById(R.id.btnlogout);
-        txtemail = findViewById(R.id.txtemail);
-        txtsenha = findViewById(R.id.txtsenha);
+        txtid = findViewById(R.id.txtid);
+        btncadastroproduto = findViewById(R.id.btncadastroproduto);
     }
 
     private void eventoonclick(){
@@ -56,7 +49,13 @@ btnlogout.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-
+btncadastroproduto.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this,CadastroProduto.class);
+        startActivity(intent);
+    }
+});
 
     }
 
@@ -76,9 +75,7 @@ btnlogout.setOnClickListener(new View.OnClickListener() {
         finish();
 
         }else{
-
-        txtemail.setText("Email : "+user.getEmail());
-        txtsenha.setText("ID: "+user.getUid());
+        txtid.setText("ID: "+user.getUid());
 
         }
 
