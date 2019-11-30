@@ -10,4 +10,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_listarlista">Listarlista</string>
+    <string name="title_activity_listar">Listar</string>
+    <string name="title_activity_lista_mercado">ListaMercado</string>
+    <string name="title_activity_listas_produtos">ListasProdutos</string>
 </resources>

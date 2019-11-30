@@ -41,6 +41,8 @@ public class CadastroProduto extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
 
 
+
+
     }
 
     private void inicializarcomponentes(){

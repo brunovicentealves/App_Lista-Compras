@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CadastroProduto"></activity>
-        <activity android:name=".Perfil" />
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".ListasProdutos"
+            android:label="@string/title_activity_listas_produtos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CadastroLista" />
+        <activity android:name=".CadastroProduto" />
         <activity android:name=".CadastroLogin" />
-        <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
