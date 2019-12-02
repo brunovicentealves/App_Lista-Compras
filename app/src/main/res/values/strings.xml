@@ -14,4 +14,6 @@
     <string name="title_activity_listar">Listar</string>
     <string name="title_activity_lista_mercado">ListaMercado</string>
     <string name="title_activity_listas_produtos">ListasProdutos</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_listados_produtos">ListadosProdutos</string>
 </resources>

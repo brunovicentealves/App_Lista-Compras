@@ -1,56 +1,44 @@
 package com.bruno.lista_compras;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.UUID;
+import android.widget.Spinner;
 
 public class CadastroProduto extends AppCompatActivity {
     private EditText txtnomeproduto;
-    private EditText txtprecoproduto;
+    private EditText txtquantidadeproduto;
     private Button btntteste;
+    private Spinner spinnercategoria;
+    private Integer idlista;
 
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+
+    String categoria [] ={"Açogue","Padaria","Higiene",};
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_produto);
+        idlista = getIntent().getExtras().getInt("idlista");
             inicializarcomponentes();
-            inicializarfirebase();
             eventoclik();
-
-
-
-
-
-    }
-    private void inicializarfirebase(){
-        FirebaseApp.initializeApp(CadastroProduto.this);
-       firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-
-
-
-
     }
 
     private void inicializarcomponentes(){
 
-        txtnomeproduto= (EditText) findViewById(R.id.txtnomeproduto1);
-        txtprecoproduto = (EditText) findViewById(R.id.txtquantidade1);
+        txtnomeproduto= (EditText) findViewById(R.id.txtnomeproduto);
+        txtquantidadeproduto = (EditText) findViewById(R.id.txtquantidade);
 
         btntteste = (Button) findViewById(R.id.btntteste);
+        spinnercategoria = (Spinner) findViewById(R.id.spinner);
+
     }
 
 
@@ -58,22 +46,41 @@ public class CadastroProduto extends AppCompatActivity {
         btntteste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Produto produto = new Produto();
-                produto.setUid(UUID.randomUUID().toString());
-                produto.setNome(txtnomeproduto.getText().toString());
-                produto.setQuantidade(txtprecoproduto.getText().toString());
-                databaseReference.child("produto").child(produto.getUid()).setValue(produto);
+
+                String nomeproduto = txtnomeproduto.getText().toString();
+                String quantidade = txtquantidadeproduto.getText().toString();
+                 if(nomeproduto.isEmpty()){
+                     AlertDialog.Builder alerta = new AlertDialog.Builder(CadastroProduto.this);
+                     alerta.setIcon( android.R.drawable.ic_dialog_alert);
+                     alerta.setTitle("Atenção!");
+                     alerta.setMessage("Você deve informar o nome do produto.");
+                     alerta.setPositiveButton("OK", null);
+                     alerta.show();
+
+                 }else{
+                    Produto produto = new Produto();
+
+                     produto.setNomeproduto(nomeproduto);
+
+                     produto.setQuantidade(quantidade);
+
+                     produto.setTipoproduto("vazio");
+
+                     produto.setIdlista(idlista);
+
+                     ProdutoDAO.inserir(CadastroProduto.this,produto);
+
+
+                 }
                 limpardados();
-                finish();
             }
         });
-
 
     }
 
     private void limpardados(){
         txtnomeproduto.setText("");
-        txtprecoproduto.setText("");
+        txtquantidadeproduto.setText("");
 
 
 

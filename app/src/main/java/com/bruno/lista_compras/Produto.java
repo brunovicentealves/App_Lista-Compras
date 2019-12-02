@@ -2,25 +2,42 @@ package com.bruno.lista_compras;
 
 public class Produto {
 
-    private String Uid;
-    private String nome;
+    private int idproduto;
+    private String nomeproduto;
+    private String tipoproduto;
     private String quantidade;
+    private int idlista;
 
-
-    public String getUid() {
-        return Uid;
+    public int getIdlista() {
+        return idlista;
     }
 
-    public void setUid(String uid) {
-        Uid = uid;
+    public void setIdlista(int idlista) {
+        this.idlista = idlista;
     }
 
-    public String getNome() {
-        return nome;
+    public int getIdproduto() {
+        return idproduto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdproduto(int idproduto) {
+        this.idproduto = idproduto;
+    }
+
+    public String getNomeproduto() {
+        return nomeproduto;
+    }
+
+    public void setNomeproduto(String nomeproduto) {
+        this.nomeproduto = nomeproduto;
+    }
+
+    public String getTipoproduto() {
+        return tipoproduto;
+    }
+
+    public void setTipoproduto(String tipoproduto) {
+        this.tipoproduto = tipoproduto;
     }
 
     public String getQuantidade() {

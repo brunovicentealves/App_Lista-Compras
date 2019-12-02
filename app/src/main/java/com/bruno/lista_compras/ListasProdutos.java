@@ -1,5 +1,7 @@
 package com.bruno.lista_compras;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,6 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -43,13 +46,13 @@ public class ListasProdutos extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         lvProdutos = findViewById(R.id.lvlistas);
         listaDeListas = new ArrayList<Lista>();
         arrayAdapterLista = new ArrayAdapter<Lista>(this,android.R.layout.simple_list_item_1,listaDeListas);
         lvProdutos.setAdapter(arrayAdapterLista);
-        //adapterProduto = new AdapterProduto(ListasProdutos.this,listaDeListas);
 
-       // lvProdutos.setAdapter(adapterProduto);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +62,26 @@ public class ListasProdutos extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+         lvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                 Intent intent = new Intent(ListasProdutos.this,ListadosProdutos.class);
+
+                 Lista lista = (Lista) adapterView.getItemAtPosition(i);
+                 intent.putExtra("idlista",lista.getId());
+                 startActivity(intent);
+             }
+         });
+         lvProdutos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+             @Override
+             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                 excluir( (Lista) adapterView.getItemAtPosition(i));
+                 return true;
+             }
+         });
+
+
     }
 
 
@@ -90,7 +113,22 @@ public class ListasProdutos extends AppCompatActivity {
         carregarLista();
 
     }
+    private void excluir(final Lista lista){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle("Excluir Time");
+        alerta.setMessage("Confirma a exclusão do Time"
+                + lista.getNomelista() + "?");
+        alerta.setNeutralButton("Cancelar", null);
+        alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ListaDAO.excluir(ListasProdutos.this, lista.getId());
+                carregarLista();
+            }
+        });
+        alerta.show();
 
+    }
     private void carregarLista(){
         List<Lista> lista = ListaDAO.getLista(this);
 
