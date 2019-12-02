@@ -16,4 +16,16 @@
     <string name="title_activity_listas_produtos">ListasProdutos</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_listados_produtos">ListadosProdutos</string>
+
+    <string-array name="spinnercategoria">
+        <item>Açogue</item>
+        <item>Padaria</item>
+        <item>Limpeza</item>
+        <item>Frutas</item>
+        <item>Bebidas</item>
+        <item>Decoração</item>
+        <item>Produtos Domesticos</item>
+        <item>Peixaria</item>
+
+    </string-array>
 </resources>

@@ -52,7 +52,7 @@ public class ProdutoDAO {
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE idlista=" +idlista,
+        Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE idlista=" +idlista +" ORDER BY tipoproduto ",
                 null);
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();

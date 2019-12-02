@@ -46,6 +46,8 @@ public class ListasProdutos extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setTitle("Listas já Criadas ");
+
 
 
         lvProdutos = findViewById(R.id.lvlistas);

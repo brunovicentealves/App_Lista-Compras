@@ -21,10 +21,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <include
-        layout="@layout/content_listas_produtos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/content_listas_produtos"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

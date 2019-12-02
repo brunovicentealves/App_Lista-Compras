@@ -10,10 +10,10 @@
 
     <ListView
         android:id="@+id/lvlistas"
-        android:layout_width="402dp"
-        android:layout_height="598dp"
+        android:layout_width="417dp"
+        android:layout_height="653dp"
         tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="57dp" />
+        tools:layout_editor_absoluteY="2dp" />
 
     <TextView
         android:id="@+id/textView4"

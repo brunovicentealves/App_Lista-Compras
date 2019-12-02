@@ -25,6 +25,8 @@ public class CadastroLista extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_lista);
 
+        getSupportActionBar().setTitle("Cadastro Lista ");
+
         inicializarcomponentes();
         eventoclik();
     }

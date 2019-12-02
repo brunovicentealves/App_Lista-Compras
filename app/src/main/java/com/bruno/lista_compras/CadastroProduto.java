@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,19 +17,22 @@ public class CadastroProduto extends AppCompatActivity {
     private Spinner spinnercategoria;
     private Integer idlista;
 
-
-    String categoria [] ={"Açogue","Padaria","Higiene",};
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_produto);
+        getSupportActionBar().setTitle("Cadastro Produto ");
         idlista = getIntent().getExtras().getInt("idlista");
             inicializarcomponentes();
             eventoclik();
+            spinnercategoria = (Spinner) findViewById(R.id.spinnercategoria);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(CadastroProduto.this,R.array.spinnercategoria,android.R.layout.simple_spinner_item
+        );
+
+        spinnercategoria.setAdapter(adapter);
+
+
     }
 
     private void inicializarcomponentes(){
@@ -37,7 +41,7 @@ public class CadastroProduto extends AppCompatActivity {
         txtquantidadeproduto = (EditText) findViewById(R.id.txtquantidade);
 
         btntteste = (Button) findViewById(R.id.btntteste);
-        spinnercategoria = (Spinner) findViewById(R.id.spinner);
+        spinnercategoria = (Spinner) findViewById(R.id.spinnercategoria);
 
     }
 
@@ -49,6 +53,7 @@ public class CadastroProduto extends AppCompatActivity {
 
                 String nomeproduto = txtnomeproduto.getText().toString();
                 String quantidade = txtquantidadeproduto.getText().toString();
+                String categoria = spinnercategoria.getSelectedItem().toString();
                  if(nomeproduto.isEmpty()){
                      AlertDialog.Builder alerta = new AlertDialog.Builder(CadastroProduto.this);
                      alerta.setIcon( android.R.drawable.ic_dialog_alert);
@@ -64,12 +69,12 @@ public class CadastroProduto extends AppCompatActivity {
 
                      produto.setQuantidade(quantidade);
 
-                     produto.setTipoproduto("vazio");
+                     produto.setTipoproduto(categoria);
 
                      produto.setIdlista(idlista);
 
                      ProdutoDAO.inserir(CadastroProduto.this,produto);
-
+                    finish();
 
                  }
                 limpardados();
